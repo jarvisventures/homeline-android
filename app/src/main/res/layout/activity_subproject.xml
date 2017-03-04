@@ -176,11 +176,85 @@
                 android:id="@+id/phoneNumber"
                 android:textSize="12sp" />
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subprojectAssignedTasks"
+                android:layout_below="@+id/contactName"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30sp"
+                android:layout_marginStart="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="true"
+                android:text="assigned tasks"/>
+
+            <View
+                android:id="@+id/bannerBar2"
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_below="@+id/subprojectAssignedTasks"
+                android:background="@color/colorPrimary"
+                />
+
+            <ListView
+                android:layout_below="@+id/bannerBar2"
+                android:id="@+id/assignedtaskslist"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="30sp">
+
+            </ListView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/todaytasks"
+                android:layout_below="@+id/assignedtaskslist"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30sp"
+                android:layout_marginStart="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="true"
+                android:text="tasks for today"/>
+
+            <View
+                android:id="@+id/bannerBar3"
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_below="@+id/todaytasks"
+                android:background="@color/colorPrimary"
+                />
+
+            <TextView
+                android:layout_below="@+id/bannerBar3"
+                android:id="@+id/todaylist"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Tasks for today">
+
+            </TextView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/subprojectHeader"
-                android:layout_below="@+id/contactName"
+                android:layout_below="@+id/todaylist"
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 android:layout_marginTop="30sp"
@@ -191,9 +265,9 @@
                 android:text="SubProjects"/>
 
             <View
-                android:id="@+id/bannerBar"
+                android:id="@+id/bannerBar4"
                 android:layout_width="match_parent"
-                android:layout_height="3sp"
+                android:layout_height="2sp"
                 android:layout_marginBottom="5sp"
                 android:layout_marginTop="5sp"
                 android:layout_marginEnd="25sp"
@@ -203,12 +277,12 @@
                 />
 
             <ListView
-                android:layout_below="@+id/bannerBar"
+                android:layout_below="@+id/bannerBar4"
                 android:id="@+id/subprojectList"
                 android:layout_marginEnd="25sp"
                 android:layout_marginStart="25sp"
                 android:layout_width="match_parent"
-                android:layout_height="300sp">
+                android:layout_height="150sp">
 
             </ListView>
 
@@ -217,7 +291,5 @@
 
 
     </ScrollView>
-
-
 
 </RelativeLayout>

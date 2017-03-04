@@ -57,7 +57,7 @@ public class SubprojectActivity extends AppCompatActivity implements SubprojectV
 
         subprojectlistView = (ListView) findViewById(R.id.subprojectList);
         subprojectheader = (TextView) findViewById(R.id.subprojectHeader);
-        subprojectheader.setTypeface(EasyFonts.caviarDreams(this));
+//        subprojectheader.setTypeface(EasyFonts.caviarDreams(this));
 
         projectTitle = (TextView) findViewById(R.id.projectName);
         projectTitle.setText(CurrentProject.getCurrentProject().getName());
