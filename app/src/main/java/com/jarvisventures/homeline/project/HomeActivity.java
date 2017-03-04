@@ -1,6 +1,7 @@
 package com.jarvisventures.homeline.project;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,18 +14,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.jarvisventures.homeline.R;
+import com.jarvisventures.homeline.account.AccountActivity;
+import com.jarvisventures.homeline.subproject.Subproject;
+import com.jarvisventures.homeline.subproject.SubprojectActivity;
+import com.vstechlab.easyfonts.EasyFonts;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements ProjectView {
+public class HomeActivity extends AppCompatActivity implements ProjectView, View.OnClickListener {
 
     private ListView listView;
+    private TextView projectHeader;
+    private Button accountButton;
 
     private ProgressBar progressBar;
     private ProjectPresenter presenter;
@@ -45,6 +53,10 @@ public class HomeActivity extends AppCompatActivity implements ProjectView {
         listView = (ListView) findViewById(R.id.projectList);
         progressBar = (ProgressBar) findViewById(R.id.projectProgress);
         presenter = new ProjectPresenterImpl(this, new FindProjectItemsImpl());
+        projectHeader = (TextView) findViewById(R.id.projectHeader);
+        projectHeader.setTypeface(EasyFonts.caviarDreams(this));
+        accountButton = (Button) findViewById(R.id.accountButton);
+        accountButton.setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,12 +86,12 @@ public class HomeActivity extends AppCompatActivity implements ProjectView {
 
     @Override
     public void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+//        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -124,5 +136,17 @@ public class HomeActivity extends AppCompatActivity implements ProjectView {
 
     public void onItemClick(int postion){
 
+        startActivity(new Intent(this, SubprojectActivity.class));
+        CurrentProject.setCurrentProject(customListArr.get(postion));
+//        CurrentSubProjects.setList(new ArrayList<>(customListArr.get(postion).getSubprojects()));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.accountButton:
+                startActivity(new Intent(this, AccountActivity.class));
+                break;
+        }
     }
 }

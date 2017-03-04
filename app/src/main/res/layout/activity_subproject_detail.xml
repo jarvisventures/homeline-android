@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_subproject_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@android:color/white"
-    tools:context="com.jarvisventures.homeline.project.HomeActivity">
+    tools:context="com.jarvisventures.homeline.subproject.subprojectdetail.SubprojectDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -50,41 +49,76 @@
 
         </RelativeLayout>
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
+
     </android.support.design.widget.AppBarLayout>
+
+
+    <TextView
+        android:id="@+id/subprojectName"
+        android:layout_below="@+id/appBar"
+        android:textAllCaps="true"
+        android:text="Subproject"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appBar"
-        android:id="@+id/projectHeader"
-        android:layout_centerVertical="true"
-        android:gravity="center_vertical"
-        android:layout_marginStart="15sp"
-        android:layout_marginTop="10sp"
+        android:id="@+id/subprojectBudget"
+        android:layout_alignTop="@+id/subprojectName"
+        android:layout_alignParentEnd="true"
+        android:text="$8,272"
+        android:layout_marginEnd="25sp"
+        android:textSize="30sp"
+        android:textColor="@color/colorGreen"/>
+
+    <TextView
+        android:id="@+id/projectName"
+        android:layout_marginStart="30sp"
+        android:layout_below="@+id/subprojectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project Name"/>
+
+    <TextView
+        android:id="@+id/subprojectCompletionDate"
+        android:text="3/2/17"
+        android:textColor="@color/colorGreen"
         android:textAllCaps="true"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimary"
-        android:text="My Projects"/>
+        android:layout_toEndOf="@+id/projectName"
+        android:layout_marginStart="20sp"
+        android:textSize="15sp"
+        android:layout_marginBottom="8sp"
+        android:layout_below="@+id/subprojectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <View
-        android:id="@+id/bannerBar"
+        android:id="@+id/banner1"
         android:layout_width="match_parent"
-        android:layout_height="3sp"
-        android:layout_margin="5sp"
-        android:layout_below="@+id/projectHeader"
+        android:layout_height="2sp"
+        android:layout_marginBottom="5sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="25sp"
+        android:layout_marginStart="25sp"
+        android:layout_below="@+id/projectName"
         android:background="@color/colorPrimary"
         />
 
-
     <ListView
-        android:layout_below="@+id/bannerBar"
-        android:id="@+id/projectList"
+        android:id="@+id/activitiesList"
+        android:layout_below="@+id/banner1"
+        android:layout_margin="20sp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
-
-
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

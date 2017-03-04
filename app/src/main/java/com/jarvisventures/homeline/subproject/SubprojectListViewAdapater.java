@@ -1,49 +1,43 @@
-package com.jarvisventures.homeline.project;
-
-/**
- * Created by klaytonerekson on 3/3/17.
- */
+package com.jarvisventures.homeline.subproject;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.jarvisventures.homeline.R;
+import com.jarvisventures.homeline.project.HomeActivity;
+import com.jarvisventures.homeline.project.Project;
 import com.squareup.picasso.Picasso;
 import com.vstechlab.easyfonts.EasyFonts;
 
 import java.util.ArrayList;
 
 /**
- * Created by klaytonerekson on 2/9/17.
+ * Created by klaytonerekson on 3/3/17.
  */
 
-public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickListener, Filterable {
-
+public class SubprojectListViewAdapater extends BaseAdapter implements View.OnClickListener {
     /*********** Declare Used Variables *********/
     private Activity activity;
     private ArrayList data;
     private static LayoutInflater inflater=null;
     public Resources res;
-    Project tempValues=null;
+    Subproject tempValues=null;
     int i=0;
-    private InventoryFilter inventoryFilter;
-    private ArrayList<Project> itemList;
-    private ArrayList<Project> filteredList;
+
+    private ArrayList<Subproject> itemList;
+    private ArrayList<Subproject> filteredList;
 
     /*************  CustomAdapter Constructor *****************/
-    public ProjectListViewAdapter(Activity a, ArrayList d,Resources resLocal) {
+    public SubprojectListViewAdapater(Activity a, ArrayList d,Resources resLocal) {
 
         /********** Take passed values **********/
         activity = a;
@@ -55,8 +49,6 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
         inflater = ( LayoutInflater )activity.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        getFilter();
-
     }
 
     /******** What is the size of Passed Arraylist Size ************/
@@ -67,7 +59,7 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
         return filteredList.size();
     }
 
-    public Project getItem(int position) {
+    public Subproject getItem(int position) {
         return filteredList.get(position);
     }
 
@@ -79,7 +71,7 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
     public static class ViewHolder{
 
         public TextView title;
-        public TextView description;
+        public TextView budget;
         public ImageView image;
         public ProgressBar progressBar;
 
@@ -89,24 +81,25 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View vi = convertView;
-        ViewHolder holder;
+        SubprojectListViewAdapater.ViewHolder holder;
 
         if(convertView==null){
 
             /****** Inflate tabitem.xml file for each row ( Defined below ) *******/
-            vi = inflater.inflate(R.layout.project_row, null);
+            vi = inflater.inflate(R.layout.subproject_row, null);
 
             /****** View Holder Object to contain tabitem.xml file elements ******/
 
-            holder = new ViewHolder();
-            holder.title = (TextView) vi.findViewById(R.id.projectTitle);
-            holder.image=(ImageView) vi.findViewById(R.id.projectImage);
-            holder.progressBar = (ProgressBar) vi.findViewById(R.id.projectProgress);
+            holder = new SubprojectListViewAdapater.ViewHolder();
+            holder.title = (TextView) vi.findViewById(R.id.subprojectTitle);
+            holder.budget = (TextView) vi.findViewById(R.id.subprojectBudget);
+//            holder.image=(ImageView) vi.findViewById(R.id.subprojectImage);
+            holder.progressBar = (ProgressBar) vi.findViewById(R.id.subprojectProgress);
             /************  Set holder with LayoutInflater ************/
             vi.setTag( holder );
         }
         else
-            holder=(ViewHolder)vi.getTag();
+            holder=(SubprojectListViewAdapater.ViewHolder)vi.getTag();
 
         if(data.size()<=0)
         {
@@ -117,21 +110,22 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
         {
             /***** Get each Model object from Arraylist ********/
             tempValues=null;
-            tempValues = ( Project ) filteredList.get( position );
+            tempValues = ( Subproject ) filteredList.get( position );
 
             /************  Set Model values in Holder elements ***********/
 
             holder.title.setText( tempValues.getName() );
             holder.title.setTypeface(EasyFonts.caviarDreams(activity.getApplicationContext()));
+            holder.budget.setText("$1,000");
+            holder.budget.setTypeface(EasyFonts.caviarDreams(activity.getApplicationContext()));
 //            holder.description.setText( tempValues.getDescription() );
 //            holder.description.setTypeface(Typeface.SERIF);
-//            Picasso.with(this.activity).load(tempValues.getImage()).placeholder(R.drawable.placeholder).into(holder.image);
+//            Picasso.with(this.activity).load("https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb").into(holder.image);
+//            holder.image.setScaleType(ImageView.ScaleType.FIT_CENTER);
 //            holder.progressBar.setVisibility(View.GONE);
-            Picasso.with(this.activity).load("https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb").into(holder.image);
-            holder.image.setScaleType(ImageView.ScaleType.FIT_CENTER);
             /******** Set Item Click Listner for LayoutInflater for each row *******/
 
-            vi.setOnClickListener(new OnItemClickListener( position ));
+            vi.setOnClickListener(new SubprojectListViewAdapater.OnItemClickListener( position ));
         }
         return vi;
     }
@@ -154,68 +148,10 @@ public class ProjectListViewAdapter extends BaseAdapter implements View.OnClickL
             /****  Call  onItemClick Method inside CustomListViewAndroidExample Class ( See Below )****/
             System.out.println(mPosition);
 
-            HomeActivity sct = (HomeActivity) activity;
+            SubprojectActivity sct = (SubprojectActivity) activity;
             sct.onItemClick(mPosition);
 
         }
     }
 
-    @Override
-    public Filter getFilter() {
-
-        if (inventoryFilter == null) {
-            inventoryFilter = new InventoryFilter();
-        }
-
-        return inventoryFilter;
-    }
-
-
-
-
-    // *********** CUSTOM FILTER ***************** //
-    /**
-     * Custom filter for friend list
-     * Filter content in friend list according to the search text
-     */
-    private class InventoryFilter extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults filterResults = new FilterResults();
-            if (constraint!=null && constraint.length()>0) {
-                ArrayList<Project> tempList = new ArrayList<Project>();
-
-                // search content in friend list
-                for (Project item : itemList) {
-                    if (item.getName().toLowerCase().contains(constraint.toString().toLowerCase())) {
-                        tempList.add(item);
-                    }
-                }
-
-                filterResults.count = tempList.size();
-                filterResults.values = tempList;
-            } else {
-                filterResults.count = itemList.size();
-                filterResults.values = itemList;
-            }
-
-            return filterResults;
-        }
-
-        /**
-         * Notify about filtered list to ui
-         * @param constraint text
-         * @param results filtered result
-         */
-        @SuppressWarnings("unchecked")
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredList = (ArrayList<Project>) results.values;
-            notifyDataSetChanged();
-        }
-    }
-
-
 }
-

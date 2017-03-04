@@ -36,33 +36,28 @@ public class FindProjectItemsImpl implements FindProjectItems {
 
     private void getProductsFromApi(final FindProjectItems.OnFinishedListener listener) {
 
-//        NetworkServiceInterface productService = NetworkServiceInterface.retrofit.create(NetworkServiceInterface.class);
-//        Call<List<Project>> call2 = productService.getProjects();
-//
-//        call2.enqueue(new Callback<List<Project>>() {
-//            @Override
-//            public void onResponse(Response<List<Project>> response, Retrofit retrofit) {
-//                // Get Response Body
-//                projectList = response.body();
-//
-//                //Convert to ArrayList
-//
-//
-//                listener.onFinished(createArrayList());
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//                System.out.println("FAILED");
-//            }
-//        });
+        NetworkServiceInterface productService = NetworkServiceInterface.retrofit.create(NetworkServiceInterface.class);
+        Call<List<Project>> call2 = productService.getProjects();
+
+        call2.enqueue(new Callback<List<Project>>() {
+            @Override
+            public void onResponse(Response<List<Project>> response, Retrofit retrofit) {
+                // Get Response Body
+                projectList = response.body();
+
+                //Convert to ArrayList
+                list = new ArrayList<Project>(projectList);
 
 
-        for (int i = 0; i < 5; i++){
+                listener.onFinished(createArrayList());
+            }
 
-            Project p = new Project("My Project "+i+1);
-            list.add(p);
-        }
+            @Override
+            public void onFailure(Throwable t) {
+                System.out.println("FAILED");
+            }
+        });
+
 
         listener.onFinished(createArrayList());
 

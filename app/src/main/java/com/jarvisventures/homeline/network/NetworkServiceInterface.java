@@ -35,7 +35,7 @@ public interface NetworkServiceInterface {
     Call<List<Project>> getProjects();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://www.giftgenie.io/api/v1/")
+            .baseUrl("https://homeline.herokuapp.com/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

@@ -1,4 +1,4 @@
-package com.jarvisventures.homeline.subproject;
+package com.jarvisventures.homeline.project;
 
 /**
  * Created by klaytonerekson on 3/3/17.
@@ -7,7 +7,7 @@ package com.jarvisventures.homeline.subproject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Subproject {
+public class Owner {
 
     @SerializedName("id")
     @Expose
@@ -18,15 +18,15 @@ public class Subproject {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("description")
-    @Expose
-    private String description;
     @SerializedName("project_id")
     @Expose
     private Integer projectId;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("role")
+    @Expose
+    private String role;
 
     public Integer getId() {
         return id;
@@ -52,22 +52,6 @@ public class Subproject {
         this.updatedAt = updatedAt;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Integer getProjectId() {
         return projectId;
     }
@@ -76,5 +60,19 @@ public class Subproject {
         this.projectId = projectId;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
 
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_subproject"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.jarvisventures.homeline.subproject.SubprojectActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/projectBannerImage"
+                android:paddingLeft="10sp"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:scaleType="fitCenter"
+                android:src="@drawable/homelinebanner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/welcomeBanner"
+                android:text="Welcome, Klay"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10sp"
+                android:layout_toStartOf="@+id/accountButton"
+                android:textAllCaps="true"/>
+
+            <Button
+                android:id="@+id/accountButton"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10sp"
+                android:background="@drawable/ic_account"
+                android:backgroundTint="@android:color/white"/>
+
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_below="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/projectName"
+                android:textAllCaps="true"
+                android:text="My Project 1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/projectBudgetHeader"
+                android:layout_alignTop="@+id/projectName"
+                android:layout_alignParentEnd="true"
+                android:text="$8,272"
+                android:layout_marginEnd="25sp"
+                android:textSize="30sp"
+                android:textColor="@color/colorGreen"/>
+
+            <TextView
+                android:id="@+id/projectCompletionDate"
+                android:text="Projected Completion Date: 3/2/17"
+                android:textColor="@color/colorGreen"
+                android:textAllCaps="true"
+                android:layout_marginStart="20sp"
+                android:textSize="15sp"
+                android:layout_marginBottom="8sp"
+                android:layout_below="@+id/projectName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/percentlabel"
+                android:layout_marginStart="20sp"
+                android:text="% COMPLETE"
+                android:layout_below="@+id/projectCompletionDate"
+                android:textSize="15sp"/>
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:layout_below="@+id/percentlabel"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/completionProgress"
+                android:layout_marginStart="60sp"
+                android:progress="6"
+                android:max="10"
+                android:scaleY="3"/>
+
+            <View
+                android:id="@+id/banner1"
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_below="@+id/completionProgress"
+                android:background="@color/colorPrimary"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/contactlabel"
+                android:layout_alignBottom="@+id/contactName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20sp"
+                android:layout_marginStart="25sp"
+                android:text="View budget"
+                android:textSize="10sp"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:textSize="12sp"
+                android:text="CONTACT"
+                android:layout_below="@+id/banner1"
+                android:layout_marginStart="25sp"
+                android:id="@+id/contactlabel"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginTop="5sp"
+                android:text="John Smith"
+                android:layout_below="@+id/contactlabel"
+                android:id="@+id/contactName"
+                android:layout_marginStart="25sp"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PHONE"
+                android:id="@+id/phonelabel"
+                android:layout_alignTop="@+id/contactlabel"
+                android:layout_toEndOf="@+id/contactlabel"
+                android:layout_marginStart="100sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="480-528-0200"
+                android:layout_alignTop="@+id/contactName"
+                android:layout_alignStart="@+id/phonelabel"
+                android:id="@+id/phoneNumber"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subprojectHeader"
+                android:layout_below="@+id/contactName"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30sp"
+                android:layout_marginStart="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="true"
+                android:text="SubProjects"/>
+
+            <View
+                android:id="@+id/bannerBar"
+                android:layout_width="match_parent"
+                android:layout_height="3sp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_below="@+id/subprojectHeader"
+                android:background="@color/colorPrimary"
+                />
+
+            <ListView
+                android:layout_below="@+id/bannerBar"
+                android:id="@+id/subprojectList"
+                android:layout_marginEnd="25sp"
+                android:layout_marginStart="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="300sp">
+
+            </ListView>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
