@@ -17,7 +17,6 @@
         android:src="@drawable/homelinebanner"/>
 
 
-
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -36,6 +35,7 @@
                 android:layout_marginTop="80sp"
                 android:layout_marginBottom="30sp"
                 android:typeface="sans"
+                android:paddingStart="10sp"
                 android:hint="Email"
                 android:background="@android:color/white"
                 android:textColor="@color/colorPrimary"
@@ -48,6 +48,7 @@
                 android:layout_height="40sp"
                 android:hint="Password"
                 android:typeface="sans"
+                android:paddingStart="10sp"
                 android:background="@android:color/white"
                 android:imeActionId="@+id/login"
                 android:imeActionLabel="@string/action_sign_in_short"
